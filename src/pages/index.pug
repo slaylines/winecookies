@@ -1,4 +1,13 @@
 extends /layouts/main.pug
+include /mixins/a
+
+block header
+  header.index
+    | Наши путешествия
 
 block content
-  | Index
+  +a(href="/2019-01-21/uzupio" class="list-item")
+    span.name
+      | Ужупис и окрестности
+    span.month
+      | апрель 2018

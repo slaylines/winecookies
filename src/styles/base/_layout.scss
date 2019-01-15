@@ -14,12 +14,20 @@ body {
 body,
 main {
   position: relative;
+
+  a {
+    text-decoration: none;
+  }
 }
 
-main {
-  height: calc(100% - #{$header-height});
+main,
+header,
+footer {
   color: $text-color;
-  background: $light-background;
   font-family: Verdana, sans-serif;
   font-weight: lighter;
+}
+
+footer {
+  background: $light-background;
 }
