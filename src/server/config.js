@@ -21,6 +21,6 @@ module.exports = {
   // Automatic routes generation globs.
   autoroutes: [
     path.resolve(__dirname, '../pages', '**/*.pug'),
-    '!**/{layouts,partials}/**/*.pug',
+    '!**/{layouts,partials,mixins}/**/*.pug',
   ],
 };

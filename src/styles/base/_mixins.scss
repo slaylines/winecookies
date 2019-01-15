@@ -20,8 +20,8 @@
   @font-face {
     font-family: $name;
     src: font-url('#{$file}.woff2') format('woff2'),
-         font-url('#{$file}.woff') format('woff'),
-         font-url('#{$file}.ttf') format('ttf');
+      font-url('#{$file}.woff') format('woff'),
+      font-url('#{$file}.ttf') format('ttf');
     font-weight: $weight;
     font-style: $style;
   }
