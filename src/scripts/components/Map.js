@@ -2,8 +2,10 @@ import 'leaflet/dist/leaflet.css';
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import { Map as LeafletMap, TileLayer } from 'react-leaflet';
+import Markers from './Markers';
 
 const defaultPosition = [55.751244, 37.618423];
 const defaultZoom = 5;
@@ -57,7 +59,36 @@ export default class Map extends Component {
     this.map.leafletElement.fitBounds(this.bounds);
   }
 
+  shiftMap(left) {
+    const size = this.map.leafletElement.getSize();
+    const shift = size.x * 0.2 * (left ? -1 : 1);
+    const point = size.divideBy(2).subtract([shift, 0]);
+    const target = this.map.leafletElement.containerPointToLatLng(point);
+
+    this.map.leafletElement.panTo(target);
+  }
+
+  onMarkerClick(marker) {
+    const { visible } = this.state;
+    if (!visible) {
+      this.shiftMap(true);
+    }
+
+    this.setState({
+      visible: true,
+      marker,
+    });
+  }
+
+  onClose() {
+    this.shiftMap(false);
+    this.setState({ visible: false });
+  }
+
   render() {
+    const { markers } = this.props;
+    const { visible, marker } = this.state;
+
     return (
       <LeafletMap
         className="map"
@@ -73,11 +104,30 @@ export default class Map extends Component {
         zoomControl={false}
       >
         <TileLayer attribution={copyright} url={tiles} />
+        <Markers
+          points={markers}
+          onClick={marker => this.onMarkerClick(marker)}
+        />
+        <div className={classNames(['infoCard', { visible }])}>
+          <div className="close" onClick={() => this.onClose()} />
+          {marker && (
+            <div className="content">
+              <div className="title">{marker.name}</div>
+              <div className="description">
+                <div
+                  className="description-content"
+                  dangerouslySetInnerHTML={{ __html: marker.description }}
+                />
+              </div>
+              <div className="photos" />
+            </div>
+          )}
+        </div>
       </LeafletMap>
     );
   }
 }
 
 Map.propTypes = {
-  markers: PropTypes.arrayOf(PropTypes.number).isRequired,
+  markers: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
