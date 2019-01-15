@@ -10,7 +10,12 @@ module.exports = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
   context: path.resolve(__dirname, '..'),
-  entry: [path.resolve('src', 'scripts', 'main.js')],
+  entry: {
+    main: [path.resolve('src', 'scripts', 'main.js')],
+    '2019-01-21-uzupio': [
+      path.resolve('src', 'scripts', '2019-01-21-uzupio.js'),
+    ],
+  },
   output: {
     path: path.resolve('static'),
     publicPath: '/',

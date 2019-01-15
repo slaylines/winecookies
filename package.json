@@ -6,11 +6,11 @@
   "author": "TehCookies",
   "license": "MIT",
   "scripts": {
-    "start": "yarn && npm-run-all --parallel open serve",
+    "start": "yarn && yarn clear && npm-run-all --parallel open serve",
     "open": "node src/server/utils/open.js",
     "serve": "nodemon src/server/main.js",
     "build": "yarn && yarn clear && yarn webpack",
-    "clear": "rimraf static/main*",
+    "clear": "rimraf static/*.js* static/*.css*",
     "webpack": "cross-env NODE_ENV=production webpack -p --config ./build/prod.webpack.config.js",
     "lint": "yarn eslint && yarn stylelint",
     "eslint": "eslint --ext .jsx,.js src",
@@ -58,11 +58,13 @@
     "express": "4.16.4",
     "globby": "8.0.1",
     "jquery": "3.3.1",
+    "leaflet": "^1.4.0",
     "morgan": "1.9.1",
     "normalize.css": "8.0.1",
     "prop-types": "^15.6.2",
     "pug": "2.0.3",
     "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "react-dom": "^16.7.0",
+    "react-leaflet": "^2.2.0"
   }
 }
