@@ -2,10 +2,12 @@ module.exports = {
   extends: [
     'airbnb-base',
     'prettier',
+    'plugin:react/recommended',
   ],
 
   plugins: [
-    'prettier'
+    'prettier',
+    'react',
   ],
 
   env: {
@@ -17,6 +19,14 @@ module.exports = {
   parserOptions: {
     ecmaFeatures: {
       modules: true,
+      jsx: true,
+    },
+  },
+
+  settings: {
+    react: {
+      pragma: 'React',
+      version: 'detect',
     },
   },
 
@@ -25,6 +35,8 @@ module.exports = {
     'no-mixed-operators': 'off',
     'global-require': 'off',
     'class-methods-use-this': 'off',
+    'react/jsx-uses-vars': 'error',
+    'react/prop-types': ['error', { ignore: ['children'] }],
     'import/no-extraneous-dependencies': 'off',
   },
 };
