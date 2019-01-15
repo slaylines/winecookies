@@ -9,16 +9,16 @@ html
     meta(name="author" content="TehCookies")
 
     block stylesheets
-      link(rel='stylesheet', href='./main.css')
+      link(rel='stylesheet', href='/main.css')
   body
-    header
+    block header
       include ../partials/header.pug
 
     main
       block content
 
-    footer
+    block footer
       include ../partials/footer.pug
 
     block javascripts
-      script(src='./main.js')
+      script(src='/main.js')

@@ -1,3 +1,29 @@
+@import 'base/variables';
+
 header {
-  background: red;
+  position: relative;
+  z-index: 999;
+  height: $header-height;
+  padding: 0 1em;
+  background: $gradient-background;
+  box-shadow: 0 0 15px 5px rgba($shadow-color, 0.6);
+
+  .header-link {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: $light-text-color;
+    cursor: pointer;
+  }
+
+  .menu-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .menu-title {
+    display: inline;
+    margin-left: 14px;
+    font-size: 1em;
+  }
 }

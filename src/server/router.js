@@ -3,6 +3,8 @@ const autoroutes = require('./utils/autoroutes');
 
 const router = express.Router();
 
-autoroutes(router);
+autoroutes(router, {
+  '^/index': '/',
+});
 
 module.exports = router;
