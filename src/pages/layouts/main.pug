@@ -1,0 +1,24 @@
+doctype html
+
+html
+  head
+    title Interactive data visualizations | TehCookies
+
+    meta(name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no")
+    meta(name="description" content="Interactive data visualizations for @winecookies Telegram channel.")
+    meta(name="author" content="TehCookies")
+
+    block stylesheets
+      link(rel='stylesheet', href='./main.css')
+  body
+    header
+      include ../partials/header.pug
+
+    main
+      block content
+
+    footer
+      include ../partials/footer.pug
+
+    block javascripts
+      script(src='./main.js')
