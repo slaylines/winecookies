@@ -106,7 +106,7 @@ export default class Map extends Component {
         <TileLayer attribution={copyright} url={tiles} />
         <Markers
           points={markers}
-          onClick={marker => this.onMarkerClick(marker)}
+          onClick={point => this.onMarkerClick(point)}
         />
         <div className={classNames(['infoCard', { visible }])}>
           <div className="close" onClick={() => this.onClose()} />
