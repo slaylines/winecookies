@@ -16,12 +16,12 @@
   @return url(image-path($path));
 }
 
-@mixin font-face($family, $weight: normal, $style: normal) {
+@mixin font-face($name, $file, $weight: normal, $style: normal) {
   @font-face {
-    font-family: $family;
-    src: font-url('#{$family}.woff2') format('woff2'),
-      font-url('#{$family}.woff') format('woff'),
-      font-url('#{$family}.ttf') format('ttf');
+    font-family: $name;
+    src: font-url('#{$file}.woff2') format('woff2'),
+         font-url('#{$file}.woff') format('woff'),
+         font-url('#{$file}.ttf') format('ttf');
     font-weight: $weight;
     font-style: $style;
   }
