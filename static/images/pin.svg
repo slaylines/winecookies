@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="26px" height="43px" viewBox="0 0 26 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
-    <title>Group</title>
+<svg width="26px" height="41px" viewBox="0 0 26 41" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>pin</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Group">
+        <g id="pin" fill-rule="nonzero">
             <rect id="Rectangle-2" fill="#272A9D" x="0" y="0" width="26" height="26.0606061" rx="3"></rect>
-            <rect id="Rectangle" fill="#FFFFFF" x="3.9" y="3.90909091" width="18.2" height="18.2424242" rx="2"></rect>
-            <polygon id="Triangle" stroke="#272A9D" fill="#272A9D" transform="translate(13.000000, 33.227273) rotate(180.000000) translate(-13.000000, -33.227273) " points="13 23.4545455 19.5 43 6.5 43"></polygon>
+            <rect id="Rectangle" fill="#FFFFFF" x="2" y="2" width="22" height="22" rx="2"></rect>
+            <polygon id="Triangle" stroke="#272A9D" fill="#272A9D" transform="translate(13.000000, 33.000000) rotate(180.000000) translate(-13.000000, -33.000000) " points="13 25 18 41 8 41"></polygon>
         </g>
     </g>
 </svg>

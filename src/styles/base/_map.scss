@@ -5,9 +5,9 @@
   .markerIcon {
     position: relative;
     width: 26px !important;
-    height: 43px !important;
+    height: 41px !important;
     margin-left: -13px !important;
-    margin-top: -43px !important;
+    margin-top: -41px !important;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,32 +16,38 @@
     .emoji,
     .name {
       position: absolute;
-      min-width: 100%;
       z-index: 1;
-      top: 4px;
-      left: 0;
-      padding-left: 8px;
-      line-height: 18px;
-      font-family: 'Comic Sans MS';
+      top: 0;
+    }
+
+    .emoji {
       font-size: 1.2em;
-      text-transform: capitalize;
-      box-sizing: border-box;
+      top: 3px;
+      left: 6px;
     }
 
     .name {
-      width: auto;
-      white-space: nowrap;
       top: 0;
-      padding: 0 4px;
-      background: $light-grey;
-      border: 4px solid $dark-background;
-      border-radius: 3px;
+      left: 22px;
+
+      padding: 2px 4px;
+      box-sizing: border-box;
+
+      background: $white;
+      border: 0 solid $dark-background;
+      border-left: none;
+      border-radius: 0 4px 4px 0;
       overflow: hidden;
+
+      line-height: 18px;
+      font-size: 1.2em;
+      white-space: nowrap;
 
       max-width: 0px;
       opacity: 0;
 
-      transition: max-width 500ms ease-in, opacity 200ms ease-in 400ms;
+      transition: border-width 1ms ease-in 200ms, opacity 200ms ease-in,
+                  max-width 1ms ease-in 220ms;
     }
 
     @media (min-width: $sm) {
@@ -51,8 +57,9 @@
         .name {
           max-width: 300px;
           opacity: 1;
+          border-width: 2px;
 
-          transition: max-width 500ms ease-out, opacity 200ms ease-out;
+          transition: opacity 200ms ease-out;
         }
       }
     }
