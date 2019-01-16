@@ -1,0 +1,48 @@
+mixin meta()
+  -var host = attributes['host'] || 'https://tg.tehcookies.com'
+  -var title = attributes['title'] || 'Interactive data visualizations | TehCookies'
+  -var description = attributes['description'] || 'Interactive data visualizations for @winecookies Telegram channel.'
+  -var url = attributes['url'] || `${host}${req.originalUrl}`
+  -var author = attributes['author'] || 'TehCookies'
+
+  -var ogType = attributes['og-type'] || 'website'
+  -var ogSiteName = attributes['og-site_name'] || 'TehCookies'
+  -var ogTitle = attributes['og-title'] || title
+  -var ogDescription = attributes['og-description'] || description
+  -var ogUrl = attributes['og-url'] || url
+
+  -var ogImage = attributes['og-image'] || `${host}/images/ogimage.jpg`
+  -var ogImageType = attributes['og-image-type'] || 'image/jpg'
+  -var ogImageWidth = attributes['og-image-width'] || '2400'
+  -var ogImageHeight = attributes['og-image-height'] || '1260'
+  -var ogImageAlt = attributes['og-image-alt'] || title
+
+  -var twitterTitle = attributes['twitter-title'] || title
+  -var twitterDescription = attributes['twitter-description'] || description
+  -var twitterUrl = attributes['twitter-url'] || url
+
+  title
+    =title
+
+  meta(charset="utf-8")
+  meta(http-equiv="X-UA-Compatible" content="IE=edge")
+  meta(name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no")
+
+  meta(name="description" content=description)
+  meta(name="author" content=author)
+
+  meta(property="og:type" content=ogType)
+  meta(property="og:site_name" content=ogSiteName)
+  meta(property="og:title" content=ogTitle)
+  meta(property="og:description" content=ogDescription)
+  meta(property="og:url" content=ogUrl)
+
+  meta(property="og:image" content=ogImage)
+  meta(property="og:image:type" content=ogImageType)
+  meta(property="og:image:width" content=ogImageWidth)
+  meta(property="og:image:height" content=ogImageHeight)
+  meta(property="og:image:alt" content=ogImageAlt)
+
+  meta(name="twitter:title" content=twitterTitle)
+  meta(name="twitter:description" content=twitterDescription)
+  meta(name="twitter:url" content=twitterUrl)
