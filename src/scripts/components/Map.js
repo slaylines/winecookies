@@ -63,21 +63,7 @@ export default class Map extends Component {
     this.map.leafletElement.fitBounds(this.bounds);
   }
 
-  shiftMap(left) {
-    const size = this.map.leafletElement.getSize();
-    const shift = size.x * 0.2 * (left ? -1 : 1);
-    const point = size.divideBy(2).subtract([shift, 0]);
-    const target = this.map.leafletElement.containerPointToLatLng(point);
-
-    this.map.leafletElement.panTo(target);
-  }
-
   onMarkerClick(marker) {
-    const { visible } = this.state;
-    if (!visible) {
-      this.shiftMap(true);
-    }
-
     this.setState({
       visible: true,
       marker,
@@ -85,7 +71,6 @@ export default class Map extends Component {
   }
 
   onClose() {
-    this.shiftMap(false);
     this.setState({ visible: false });
   }
 
