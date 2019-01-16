@@ -89,20 +89,14 @@ export default class Map extends Component {
     this.setState({ visible: false });
   }
 
-  initPhotoSwipe() {
+  initPhotoSwipe(index) {
     const { marker } = this.state;
-
-    if (!marker) {
-      return;
-    }
-
     const pswpElement = document.querySelectorAll('.pswp')[0];
-    const options = { index: 0 };
     const gallery = new PhotoSwipe(
       pswpElement,
       PhotoSwipeUI_Default,
       marker.photos,
-      options
+      { index }
     );
 
     gallery.init();
@@ -143,7 +137,16 @@ export default class Map extends Component {
                   dangerouslySetInnerHTML={{ __html: marker.description }}
                 />
               </div>
-              <div className="photos" onClick={() => this.initPhotoSwipe()} />
+              <div className="photos">
+                {marker.photos.map((photo, index) => (
+                  <img
+                    key={photo.src}
+                    src={photo.src}
+                    style={{ width: `${100 / marker.photos.length}%` }}
+                    onClick={() => this.initPhotoSwipe(index)}
+                  />
+                ))}
+              </div>
             </div>
           )}
         </div>

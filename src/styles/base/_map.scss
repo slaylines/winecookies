@@ -159,9 +159,20 @@
       }
 
       .photos {
-        background: #eee;
         height: 33%;
-        padding-top: 12px;
+        padding-top: 14px;
+
+        display: flex;
+
+        img {
+          cursor: pointer;
+          padding-left: 6px;
+          object-fit: contain;
+
+          &:first-child {
+            padding-left: 0;
+          }
+        }
       }
     }
   }
