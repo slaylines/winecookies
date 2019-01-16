@@ -4,11 +4,14 @@ import { Marker } from 'react-leaflet';
 import { DivIcon } from 'leaflet';
 
 export default class Markers extends Component {
-  getIcon(name) {
+  getIcon({ name, emoji }) {
     return new DivIcon({
       className: 'markerIcon',
-      html: `<img src='../images/pin.svg'><span class='letter'>
-        ${name[0]}</span><span class='name'>${name}</span>`,
+      html: `
+        <img src='../images/pin.svg'>
+        <span class='emoji'>${emoji}</span>
+        <span class='name'>${name}</span>
+      `,
     });
   }
 
@@ -21,7 +24,7 @@ export default class Markers extends Component {
           <Marker
             key={`${point.lat}_${point.lon}`}
             position={[point.lat, point.lon]}
-            icon={this.getIcon(point.name)}
+            icon={this.getIcon(point)}
             onClick={() => onClick(point)}
           />
         ))}
