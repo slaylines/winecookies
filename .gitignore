@@ -3,4 +3,5 @@ node_modules
 dist
 .env
 yarn-error.log
-static/main*
+static/*.js*
+static/*.css*
