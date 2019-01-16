@@ -72,7 +72,7 @@
     max-width: 480px;
     max-height: 600px;
     height: 90%;
-    margin: 5% auto;
+    margin: 5%;
     background: $background;
     border-radius: 4px;
     box-shadow: 0 0 20px 2px rgba($dark-grey, 0.2);
@@ -156,31 +156,6 @@
             margin-top: 8px;
             margin-bottom: 0;
           }
-        }
-
-        &:before,
-        &:after {
-          content: '';
-          position: absolute;
-          width: calc(100% - 12px);
-          height: 12px;
-          left: 0;
-        }
-        &:before {
-          top: -1px;
-          background-image: linear-gradient(
-            0deg,
-            rgba($background, 0) 0%,
-            $background 80%
-          );
-        }
-        &:after {
-          bottom: -1px;
-          background-image: linear-gradient(
-            0deg,
-            $background 20%,
-            rgba($background, 0) 100%
-          );
         }
       }
 

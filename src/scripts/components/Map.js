@@ -49,8 +49,8 @@ export default class Map extends Component {
       bounds.maxLon = Math.max(lon, bounds.maxLon);
     });
 
-    const latDelta = (bounds.maxLat - bounds.minLat) * 0.15;
-    const lonDelta = (bounds.maxLon - bounds.minLon) * 0.15;
+    const latDelta = (bounds.maxLat - bounds.minLat) * 0.1;
+    const lonDelta = (bounds.maxLon - bounds.minLon) * 0.1;
 
     this.bounds = [
       [bounds.minLat - latDelta, bounds.minLon - lonDelta],
@@ -119,7 +119,11 @@ export default class Map extends Component {
                   dangerouslySetInnerHTML={{ __html: marker.description }}
                 />
               </div>
-              <div className="photos" />
+              <div className="photos">
+                {marker.photos.map(photo => (
+                  <div key={photo} className="photo" />
+                ))}
+              </div>
             </div>
           )}
         </div>
