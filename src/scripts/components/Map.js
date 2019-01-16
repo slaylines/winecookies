@@ -1,10 +1,14 @@
 import 'leaflet/dist/leaflet.css';
+import 'photoswipe/dist/photoswipe.css';
+import 'photoswipe/dist/default-skin/default-skin.css';
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
 import { Map as LeafletMap, TileLayer } from 'react-leaflet';
+import * as PhotoSwipe from 'photoswipe';
+import * as PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default';
+
 import Markers from './Markers';
 
 const defaultPosition = [55.751244, 37.618423];
@@ -85,6 +89,25 @@ export default class Map extends Component {
     this.setState({ visible: false });
   }
 
+  initPhotoSwipe() {
+    const { marker } = this.state;
+
+    if (!marker) {
+      return;
+    }
+
+    const pswpElement = document.querySelectorAll('.pswp')[0];
+    const options = { index: 0 };
+    const gallery = new PhotoSwipe(
+      pswpElement,
+      PhotoSwipeUI_Default,
+      marker.photos,
+      options
+    );
+
+    gallery.init();
+  }
+
   render() {
     const { markers } = this.props;
     const { visible, marker } = this.state;
@@ -102,6 +125,7 @@ export default class Map extends Component {
         scrollWheelZoom={false}
         touchZoom={false}
         zoomControl={false}
+        doubleClickZoom={false}
       >
         <TileLayer attribution={copyright} url={tiles} />
         <Markers
@@ -119,11 +143,7 @@ export default class Map extends Component {
                   dangerouslySetInnerHTML={{ __html: marker.description }}
                 />
               </div>
-              <div className="photos">
-                {marker.photos.map(photo => (
-                  <div key={photo} className="photo" />
-                ))}
-              </div>
+              <div className="photos" onClick={() => this.initPhotoSwipe()} />
             </div>
           )}
         </div>

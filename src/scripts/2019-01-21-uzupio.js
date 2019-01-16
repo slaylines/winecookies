@@ -10,4 +10,4 @@ class App extends Component {
   }
 }
 
-render(<App />, document.querySelector('main'));
+render(<App />, document.querySelector('main > .app'));
