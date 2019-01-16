@@ -1,6 +1,10 @@
 @import 'base/variables';
 
 footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   z-index: 999;
   bottom: 0;
@@ -25,5 +29,9 @@ footer {
         border-bottom: 1px solid rgba($link-color, 0.8);
       }
     }
+  }
+
+  .likely {
+    margin-left: 5px;
   }
 }

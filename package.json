@@ -61,6 +61,7 @@
     "cookie-parser": "1.4.3",
     "express": "4.16.4",
     "globby": "8.0.1",
+    "ilyabirman-likely": "^2.3.1",
     "jquery": "3.3.1",
     "leaflet": "^1.4.0",
     "morgan": "1.9.1",

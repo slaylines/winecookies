@@ -3546,6 +3546,11 @@ ignore@^5.0.4:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.0.4.tgz#33168af4a21e99b00c5d41cbadb6a6cb49903a45"
   integrity sha512-WLsTMEhsQuXpCiG173+f3aymI43SXa+fB1rSfbzyP4GkPP+ZFVuO0/3sFUGNBtifisPeDcl/uD/Y2NxZ7xFq4g==
 
+ilyabirman-likely@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/ilyabirman-likely/-/ilyabirman-likely-2.3.1.tgz#ce8278be47c241d060de9ff12c3699f24f3ac1e6"
+  integrity sha512-V9idKn70YvYXryUQWdJ/A8Z6VkRCACXmv3rDGAKCFZv+1Pf3rO8JzrW4D/nN8WWZsJhN47EVAFkxAwTl+srTag==
+
 import-fresh@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/import-fresh/-/import-fresh-2.0.0.tgz#d81355c15612d386c61f9ddd3922d4304822a546"
