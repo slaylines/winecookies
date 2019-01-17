@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const responseTime = require('response-time');
 const morgan = require('morgan');
 const router = require('./router');
 const helpers = require('./helpers');
@@ -20,6 +21,9 @@ if (config.isDevelopment) {
 app.set('views', config.views);
 app.set('view engine', 'pug');
 app.locals.basedir = config.views;
+
+// Measure response time of every request.
+app.use(responseTime((req, res, time) => console.log(`Time: ${time}`)));
 
 // Log every request.
 app.use(morgan('combined'));
