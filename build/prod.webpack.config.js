@@ -2,6 +2,7 @@ const path = require('path');
 const dotenv = require('dotenv');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 dotenv.load();
 
@@ -16,9 +17,9 @@ module.exports = {
     ],
   },
   output: {
-    path: path.resolve('static'),
+    path: path.resolve('static', 'assets'),
+    filename: '[name].[chunkhash:8].js',
     publicPath: '/',
-    filename: '[name].js',
   },
   module: {
     rules: [
@@ -42,8 +43,12 @@ module.exports = {
       profile: false,
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css',
+      filename: '[name].[hash].css',
+      chunkFilename: '[id].[hash].css',
+    }),
+    new ManifestPlugin({
+      basePath: '/assets/',
+      publicPath: '/assets/',
     }),
   ],
   stats: {

@@ -8,7 +8,7 @@ html
       +meta()
 
     block stylesheets
-      link(rel='stylesheet', href='/main.css')
+      link(rel='stylesheet', href=assetPath('/assets/main.css'))
   body
     block header
       include ../partials/header.pug
@@ -20,4 +20,4 @@ html
       include ../partials/footer.pug
 
     block javascripts
-      script(src='/main.js')
+      script(src=assetPath('/assets/main.js'))
