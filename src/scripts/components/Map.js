@@ -91,6 +91,9 @@ export default class Map extends Component {
     const { markers } = this.props;
     const { visible, marker } = this.state;
 
+    const photosCount = marker ? marker.photos.length : 1;
+    const photosWidth = photosCount <= 3 ? 100 / photosCount : 30;
+
     return (
       <LeafletMap
         className="map"
@@ -127,7 +130,7 @@ export default class Map extends Component {
                   <img
                     key={photo.src}
                     src={photo.src}
-                    style={{ width: `${100 / marker.photos.length}%` }}
+                    style={{ width: `${photosWidth}%` }}
                     onClick={() => this.initPhotoSwipe(index)}
                   />
                 ))}

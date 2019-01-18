@@ -6,7 +6,7 @@ header {
   height: $header-height;
   padding: 0 1em;
   color: $light-text-color;
-  background: $gradient-background;
+  background: $dark-background;
   box-shadow: 0 0 15px 5px rgba($shadow-color, 0.6);
 
   &.index {
