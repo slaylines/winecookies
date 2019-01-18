@@ -10,20 +10,23 @@ import * as PhotoSwipe from 'photoswipe';
 import * as PhotoSwipeTheme from 'photoswipe/dist/photoswipe-ui-default';
 
 import Markers from './Markers';
-import tiles from '../utils/tiles';
 
 const defaultPosition = [55.751244, 37.618423];
 const defaultZoom = 5;
 
 export default class Map extends Component {
-  constructor(props) {
-    super(props);
+  static propTypes = {
+    tiles: PropTypes.shape({
+      url: PropTypes.string.isRequired,
+      attribution: PropTypes.string.isRequired,
+    }).isRequired,
+    markers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  };
 
-    this.state = {
-      marker: null,
-      visible: false,
-    };
-  }
+  state = {
+    marker: null,
+    visible: false,
+  };
 
   componentDidMount() {
     this.setMapBounds();
@@ -83,7 +86,7 @@ export default class Map extends Component {
   }
 
   render() {
-    const { markers } = this.props;
+    const { tiles, markers } = this.props;
     const { visible, marker } = this.state;
 
     const photosCount = marker ? marker.photos.length : 1;
@@ -104,7 +107,7 @@ export default class Map extends Component {
         zoomControl={false}
         doubleClickZoom={false}
       >
-        <TileLayer {...tiles.wikimedia} />
+        <TileLayer {...tiles} />
         <Markers
           points={markers}
           onClick={point => this.onMarkerClick(point)}
@@ -137,7 +140,3 @@ export default class Map extends Component {
     );
   }
 }
-
-Map.propTypes = {
-  markers: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-};
