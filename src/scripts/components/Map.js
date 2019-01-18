@@ -10,15 +10,10 @@ import * as PhotoSwipe from 'photoswipe';
 import * as PhotoSwipeTheme from 'photoswipe/dist/photoswipe-ui-default';
 
 import Markers from './Markers';
+import tiles from '../utils/tiles';
 
 const defaultPosition = [55.751244, 37.618423];
 const defaultZoom = 5;
-const copyright = `
-  &copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> &copy;
-  <a href='http://cartodb.com/attributions'>CartoDB</a>
-`;
-const tiles =
-  'https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}{r}.png';
 
 export default class Map extends Component {
   constructor(props) {
@@ -109,7 +104,7 @@ export default class Map extends Component {
         zoomControl={false}
         doubleClickZoom={false}
       >
-        <TileLayer attribution={copyright} url={tiles} />
+        <TileLayer {...tiles.wikimedia} />
         <Markers
           points={markers}
           onClick={point => this.onMarkerClick(point)}
