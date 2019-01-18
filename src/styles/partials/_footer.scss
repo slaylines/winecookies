@@ -16,21 +16,6 @@ footer {
   text-align: center;
   font-size: 0.8em;
 
-  .made-by {
-    margin-right: 20px;
-
-    a {
-      text-decoration: none;
-      color: $link-color;
-      border-bottom: 1px solid rgba($link-color, 0.4);
-      margin-left: 6px;
-
-      &:hover {
-        border-bottom: 1px solid rgba($link-color, 0.8);
-      }
-    }
-  }
-
   .likely {
     margin-left: 5px;
   }
