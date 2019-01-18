@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Map as LeafletMap, TileLayer } from 'react-leaflet';
 import * as PhotoSwipe from 'photoswipe';
-import * as PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default';
+import * as PhotoSwipeTheme from 'photoswipe/dist/photoswipe-ui-default';
 
 import Markers from './Markers';
 
@@ -79,7 +79,7 @@ export default class Map extends Component {
     const pswpElement = document.querySelectorAll('.pswp')[0];
     const gallery = new PhotoSwipe(
       pswpElement,
-      PhotoSwipeUI_Default,
+      PhotoSwipeTheme,
       marker.photos,
       { index }
     );
