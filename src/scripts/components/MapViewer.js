@@ -46,12 +46,12 @@ class MapViewer extends Component {
 
     const { isLandingClosed, sid } = this.state;
     const isLandingVisible = !!Landing && !isLandingClosed;
-    const scene = isLandingVisible ? { center, zoom } : scenes[sid];
+    const scene = isLandingVisible ? { sid: -1, center, zoom } : scenes[sid];
 
     return (
       <div className="map-viewer">
         {isLandingVisible && <Landing onClose={this.onLandingClose} />}
-        <Map tiles={tiles} {...scene} />
+        <Map tiles={tiles} sid={sid} {...scene} />
       </div>
     );
   }

@@ -10,6 +10,7 @@ import * as PhotoSwipe from 'photoswipe';
 import * as PhotoSwipeTheme from 'photoswipe/dist/photoswipe-ui-default';
 
 import Markers from './Markers';
+import { getMarkersBounds } from '../utils/map';
 
 export default class Map extends Component {
   static propTypes = {
@@ -17,9 +18,10 @@ export default class Map extends Component {
       url: PropTypes.string.isRequired,
       attribution: PropTypes.string.isRequired,
     }).isRequired,
+    markers: PropTypes.arrayOf(PropTypes.object),
     center: PropTypes.arrayOf(PropTypes.number),
     zoom: PropTypes.number,
-    markers: PropTypes.arrayOf(PropTypes.object),
+    sid: PropTypes.number,
   };
 
   static defaultProps = {
@@ -35,36 +37,17 @@ export default class Map extends Component {
     this.setMapBounds();
   }
 
-  setMapBounds() {
-    const { markers } = this.props;
+  componentWillReceiveProps({ sid, markers }) {
+    if (this.props.sid !== sid) {
+      this.setMapBounds(markers);
+    }
+  }
 
+  setMapBounds(markers = this.props.markers) {
     if (!markers.length) return;
 
-    const bounds = {
-      minLon: markers[0].lon,
-      maxLon: markers[0].lon,
-      minLat: markers[0].lat,
-      maxLat: markers[0].lat,
-    };
-
-    markers.forEach(marker => {
-      const { lat, lon } = marker;
-
-      bounds.minLat = Math.min(lat, bounds.minLat);
-      bounds.maxLat = Math.max(lat, bounds.maxLat);
-      bounds.minLon = Math.min(lon, bounds.minLon);
-      bounds.maxLon = Math.max(lon, bounds.maxLon);
-    });
-
-    const latDelta = (bounds.maxLat - bounds.minLat) * 0.1;
-    const lonDelta = (bounds.maxLon - bounds.minLon) * 0.1;
-
-    this.bounds = [
-      [bounds.minLat - latDelta, bounds.minLon - lonDelta],
-      [bounds.maxLat + latDelta, bounds.maxLon + lonDelta],
-    ];
-
-    this.map.leafletElement.fitBounds(this.bounds);
+    const bounds = getMarkersBounds(markers);
+    this.map.leafletElement.fitBounds(bounds);
   }
 
   onMarkerClick(marker) {
