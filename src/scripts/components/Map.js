@@ -51,8 +51,6 @@ export default class Map extends Component {
   animateToScene(props = this.props) {
     const { markers, center, zoom, bounds } = props;
 
-    console.log(props);
-
     if (center && zoom) {
       this.flyTo(center, zoom);
     } else if (bounds) {

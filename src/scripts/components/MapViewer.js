@@ -54,18 +54,16 @@ class MapViewer extends Component {
 
     return (
       <div className="map-viewer">
-        {isLandingVisible ? (
-          <Landing onClose={this.onLandingClose} />
-        ) : (
-          <MapViewerControls
-            sid={sid}
-            min={0}
-            max={scenes.length - 1}
-            onChange={this.onSceneChange}
-          />
-        )}
-
-        <Map tiles={tiles} sid={sid} {...scene} />
+        <MapViewerControls
+          sid={sid}
+          min={0}
+          max={scenes.length - 1}
+          disabled={isLandingVisible}
+          onChange={this.onSceneChange}
+        >
+          {isLandingVisible && <Landing onClose={this.onLandingClose} />}
+          <Map tiles={tiles} sid={sid} {...scene} />
+        </MapViewerControls>
       </div>
     );
   }

@@ -7,6 +7,7 @@ class MapViewerControls extends Component {
     sid: PropTypes.number,
     min: PropTypes.number,
     max: PropTypes.number,
+    disabled: PropTypes.bool,
     onChange: PropTypes.func,
   };
 
@@ -14,8 +15,8 @@ class MapViewerControls extends Component {
     sid: 0,
     min: 0,
     max: 0,
-    onPrev: () => {},
-    onNext: () => {},
+    disabled: false,
+    onChange: () => {},
   };
 
   onPrev = () => {
@@ -33,15 +34,15 @@ class MapViewerControls extends Component {
   };
 
   render() {
-    const { sid, min, max } = this.props;
-    const showPrev = sid > min;
-    const showNext = sid < max;
+    const { sid, min, max, disabled, children } = this.props;
+    const showPrev = !disabled && sid > min;
+    const showNext = !disabled && sid < max;
 
     return (
       <Swipeable
         className="map-viewer-controls"
-        onSwipedRight={this.onPrev}
-        onSwipedLeft={this.onNext}
+        onSwipedRight={!disabled && this.onPrev}
+        onSwipedLeft={!disabled && this.onNext}
       >
         {showPrev && (
           <div className="map-viewer-controls-prev" onClick={this.onPrev}>
@@ -54,6 +55,8 @@ class MapViewerControls extends Component {
             &rsaquo;
           </div>
         )}
+
+        {children}
       </Swipeable>
     );
   }
