@@ -47,7 +47,7 @@ export default class Map extends Component {
     if (!markers.length) return;
 
     const bounds = getMarkersBounds(markers);
-    this.map.leafletElement.fitBounds(bounds);
+    this.map.leafletElement.flyToBounds(bounds, { animate: true, duration: 1 });
   }
 
   onMarkerClick(marker) {
