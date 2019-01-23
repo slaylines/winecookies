@@ -43,6 +43,7 @@ class MapViewerControls extends Component {
         className="map-viewer-controls"
         onSwipedRight={!disabled ? this.onPrev : undefined}
         onSwipedLeft={!disabled ? this.onNext : undefined}
+        trackMouse
       >
         {showPrev && (
           <div className="map-viewer-controls-prev" onClick={this.onPrev}>

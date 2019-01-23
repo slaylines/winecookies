@@ -1,3 +1,7 @@
+@import 'base/variables';
+
+$control-size: 30px;
+
 .map-viewer {
   position: relative;
 
@@ -11,19 +15,34 @@
     .map-viewer-controls-prev,
     .map-viewer-controls-next {
       position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       top: 50%;
+      width: $control-size;
+      height: $control-size * 2;
+      padding-bottom: 6px;
+      background: $dark-blue;
+      color: $white;
+      font-size: 3em;
       transform: translateY(-50%);
+      opacity: 0.7;
       cursor: pointer;
       z-index: 1010;
-      font-size: 3em;
     }
 
     .map-viewer-controls-prev {
       left: 0;
+      padding-right: $control-size * 0.25;
+      border-bottom-right-radius: $control-size * 2;
+      border-top-right-radius: $control-size * 2;
     }
 
     .map-viewer-controls-next {
       right: 0;
+      padding-left: $control-size * 0.25;
+      border-bottom-left-radius: $control-size * 2;
+      border-top-left-radius: $control-size * 2;
     }
   }
 }
