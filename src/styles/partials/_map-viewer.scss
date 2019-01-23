@@ -7,7 +7,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    font-size: 3em;
 
     .map-viewer-controls-prev,
     .map-viewer-controls-next {
@@ -16,6 +15,7 @@
       transform: translateY(-50%);
       cursor: pointer;
       z-index: 1010;
+      font-size: 3em;
     }
 
     .map-viewer-controls-prev {
