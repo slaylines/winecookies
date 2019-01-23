@@ -41,8 +41,8 @@ class MapViewerControls extends Component {
     return (
       <Swipeable
         className="map-viewer-controls"
-        onSwipedRight={!disabled && this.onPrev}
-        onSwipedLeft={!disabled && this.onNext}
+        onSwipedRight={!disabled ? this.onPrev : undefined}
+        onSwipedLeft={!disabled ? this.onNext : undefined}
       >
         {showPrev && (
           <div className="map-viewer-controls-prev" onClick={this.onPrev}>

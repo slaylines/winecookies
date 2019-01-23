@@ -14,7 +14,7 @@ main {
 
 body {
   color: $text-color;
-  font-family: Verdana, sans-serif;
+  font-family: $main-font;
   font-weight: lighter;
   overflow: hidden;
 }

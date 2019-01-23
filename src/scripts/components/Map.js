@@ -4,12 +4,10 @@ import 'photoswipe/dist/default-skin/default-skin.css';
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { Map as LeafletMap, TileLayer } from 'react-leaflet';
-import * as PhotoSwipe from 'photoswipe';
-import * as PhotoSwipeTheme from 'photoswipe/dist/photoswipe-ui-default';
 
 import Markers from './Markers';
+import InfoCard from './InfoCard';
 import { getMarkersBounds } from '../utils/map';
 
 const ANIMATION_DURATION = 1;
@@ -76,11 +74,6 @@ export default class Map extends Component {
     });
   }
 
-  clearInfoCardScroll = () => {
-    this.description.scrollTo(0, 0);
-    this.photos.scrollTo(0, 0);
-  };
-
   onMarkerClick = marker => {
     this.setState({
       visible: true,
@@ -88,40 +81,13 @@ export default class Map extends Component {
     });
   };
 
-  onClose = () => {
+  onInfoCardClose = () => {
     this.setState({ visible: false });
-    this.clearInfoCardScroll();
   };
-
-  onMapClick = () => {
-    const { visible } = this.state;
-
-    if (!visible) {
-      return;
-    }
-
-    this.onClose();
-  };
-
-  initPhotoSwipe(index) {
-    const { marker } = this.state;
-    const pswpElement = document.querySelectorAll('.pswp')[0];
-    const gallery = new PhotoSwipe(
-      pswpElement,
-      PhotoSwipeTheme,
-      marker.photos,
-      { index }
-    );
-
-    gallery.init();
-  }
 
   render() {
     const { tiles, defaultCenter, defaultZoom, markers } = this.props;
     const { visible, marker } = this.state;
-
-    const photosCount = marker ? marker.photos.length : 1;
-    const photosWidth = photosCount <= 3 ? 100 / photosCount : 30;
 
     return (
       <LeafletMap
@@ -139,43 +105,15 @@ export default class Map extends Component {
         doubleClickZoom={false}
       >
         <TileLayer {...tiles} />
-        <div className="overlay" onClick={this.onMapClick} />
         <Markers
           points={markers}
           onClick={point => this.onMarkerClick(point)}
         />
-        <div className={classNames(['infoCard', { visible }])}>
-          <div className="close" onClick={this.onClose} />
-          {marker && (
-            <div className="content">
-              <div className="title">{marker.name}</div>
-              <div className="description">
-                <div
-                  className="description-content"
-                  dangerouslySetInnerHTML={{ __html: marker.description }}
-                  ref={node => {
-                    this.description = node;
-                  }}
-                />
-              </div>
-              <div
-                className="photos"
-                ref={node => {
-                  this.photos = node;
-                }}
-              >
-                {marker.photos.map((photo, index) => (
-                  <img
-                    key={photo.src}
-                    src={photo.src}
-                    style={{ width: `${photosWidth}%` }}
-                    onClick={() => this.initPhotoSwipe(index)}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
+        <InfoCard
+          marker={marker}
+          visible={visible}
+          onClose={this.onInfoCardClose}
+        />
       </LeafletMap>
     );
   }
