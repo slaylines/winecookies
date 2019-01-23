@@ -28,7 +28,7 @@ $control-size: 30px;
       transform: translateY(-50%);
       opacity: 0.7;
       cursor: pointer;
-      z-index: 1010;
+      z-index: $map-z-index;
     }
 
     .map-viewer-controls-prev {

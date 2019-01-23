@@ -2,7 +2,7 @@
 
 header {
   position: relative;
-  z-index: 1400;
+  z-index: $nav-z-index;
   height: $header-height;
   padding: 0 1em;
   color: $light-text-color;

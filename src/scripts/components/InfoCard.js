@@ -50,8 +50,6 @@ class InfoCard extends Component {
     return (
       <Portal node={portalNode}>
         <div className={classes}>
-          <div className="overlay" onClick={this.onClose} />
-          <div className="close" onClick={this.onClose} />
           {marker && (
             <div className="content">
               <div className="title">{marker.name}</div>
@@ -81,6 +79,10 @@ class InfoCard extends Component {
               </div>
             </div>
           )}
+
+          <div className="close" onClick={this.onClose}>
+            <span className="icon-cancel" />
+          </div>
         </div>
       </Portal>
     );
