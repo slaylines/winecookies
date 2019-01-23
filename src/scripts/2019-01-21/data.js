@@ -1,7 +1,7 @@
 // FYI: https://emojipedia.org.
 
 export default {
-  defaultCenter: [55.1272, 25.2797],
+  defaultCenter: [55.0272, 25.2797],
   defaultZoom: 8,
   scenes: [
     {

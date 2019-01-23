@@ -15,8 +15,11 @@ class Landing extends Component {
           <div className="title">Республика Ужупис</div>
           <div className="subtitle">Вильнюс, Литва</div>
         </div>
+        <div className="button">
+          <img src="/images/2019-01-21-uzupio/stamp.png" />
+          Смотреть места
+        </div>
         <img className="logo" src="/images/2019-01-21-uzupio/uzupio.png" />
-        <div className="button">Смотреть места</div>
       </div>
     );
   }
