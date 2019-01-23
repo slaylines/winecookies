@@ -1,12 +1,23 @@
+@import '../base/variables';
+
 .landing {
   position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  top: 0;
+  z-index: 1000;
+  top: $header-height;
   left: 0;
   width: 100vw;
-  height: 100vh;
-  background: rgba(256, 256, 256, 0.5);
-  z-index: 1000;
+  height: calc(100vh - #{$header-height} - #{$footer-height});
+
+  background: $light-gradient;
+
+  .header {
+    width: 100%;
+    padding: 36px 20px;
+    text-align: right;
+    line-height: 2.4em;
+    color: $text-color;
+
+    .title { font-size: 1.6em; }
+    .subtitle { font-size: 1.4em; }
+  }
 }

@@ -11,7 +11,10 @@ class Landing extends Component {
 
     return (
       <div className="landing" onClick={onClose}>
-        Landing
+        <div className="header">
+          <div className="title">Республика Ужупис</div>
+          <div className="subtitle">Вильнюс, Литва</div>
+        </div>
       </div>
     );
   }
