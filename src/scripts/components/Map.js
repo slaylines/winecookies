@@ -11,16 +11,19 @@ import * as PhotoSwipeTheme from 'photoswipe/dist/photoswipe-ui-default';
 
 import Markers from './Markers';
 
-const defaultPosition = [55.751244, 37.618423];
-const defaultZoom = 5;
-
 export default class Map extends Component {
   static propTypes = {
     tiles: PropTypes.shape({
       url: PropTypes.string.isRequired,
       attribution: PropTypes.string.isRequired,
     }).isRequired,
-    markers: PropTypes.arrayOf(PropTypes.object).isRequired,
+    center: PropTypes.arrayOf(PropTypes.number),
+    zoom: PropTypes.number,
+    markers: PropTypes.arrayOf(PropTypes.object),
+  };
+
+  static defaultProps = {
+    markers: [],
   };
 
   state = {
@@ -34,6 +37,8 @@ export default class Map extends Component {
 
   setMapBounds() {
     const { markers } = this.props;
+
+    if (!markers.length) return;
 
     const bounds = {
       minLon: markers[0].lon,
@@ -58,6 +63,7 @@ export default class Map extends Component {
       [bounds.minLat - latDelta, bounds.minLon - lonDelta],
       [bounds.maxLat + latDelta, bounds.maxLon + lonDelta],
     ];
+
     this.map.leafletElement.fitBounds(this.bounds);
   }
 
@@ -86,7 +92,7 @@ export default class Map extends Component {
   }
 
   render() {
-    const { tiles, markers } = this.props;
+    const { tiles, center, zoom, markers } = this.props;
     const { visible, marker } = this.state;
 
     const photosCount = marker ? marker.photos.length : 1;
@@ -98,8 +104,8 @@ export default class Map extends Component {
         ref={node => {
           this.map = node;
         }}
-        center={defaultPosition}
-        zoom={defaultZoom}
+        center={center}
+        zoom={zoom}
         dragging={false}
         keyboard={false}
         scrollWheelZoom={false}
