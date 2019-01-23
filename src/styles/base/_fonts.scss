@@ -2,3 +2,8 @@
 
 @include font-face('Spectral Regular', 'Spectral Regular');
 @include font-face('PT Root UI Medium', 'PT Root UI Medium');
+@include font-face('Icons', 'Icons');
+
+/* Source: http://fontello.com/ */
+.icon-left-open-big:before { content: '\e800'; }
+.icon-right-open-big:before { content: '\e801'; }

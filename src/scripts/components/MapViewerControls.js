@@ -47,13 +47,13 @@ class MapViewerControls extends Component {
       >
         {showPrev && (
           <div className="map-viewer-controls-prev" onClick={this.onPrev}>
-            &lsaquo;
+            <span className="icon-left-open-big" />
           </div>
         )}
 
         {showNext && (
           <div className="map-viewer-controls-next" onClick={this.onNext}>
-            &rsaquo;
+            <span className="icon-right-open-big" />
           </div>
         )}
 
