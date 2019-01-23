@@ -1,8 +1,8 @@
 // FYI: https://emojipedia.org.
 
 export default {
-  center: [55.1272, 25.2797],
-  zoom: 8,
+  defaultCenter: [55.1272, 25.2797],
+  defaultZoom: 8,
   scenes: [
     {
       markers: [

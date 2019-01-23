@@ -12,6 +12,8 @@ import * as PhotoSwipeTheme from 'photoswipe/dist/photoswipe-ui-default';
 import Markers from './Markers';
 import { getMarkersBounds } from '../utils/map';
 
+const ANIMATION_DURATION = 1;
+
 export default class Map extends Component {
   static propTypes = {
     tiles: PropTypes.shape({
@@ -19,6 +21,9 @@ export default class Map extends Component {
       attribution: PropTypes.string.isRequired,
     }).isRequired,
     markers: PropTypes.arrayOf(PropTypes.object),
+    defaultCenter: PropTypes.arrayOf(PropTypes.number),
+    defaultZoom: PropTypes.number,
+    bounds: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
     center: PropTypes.arrayOf(PropTypes.number),
     zoom: PropTypes.number,
     sid: PropTypes.number,
@@ -34,20 +39,43 @@ export default class Map extends Component {
   };
 
   componentDidMount() {
-    this.setMapBounds();
+    this.animateToScene();
   }
 
-  componentWillReceiveProps({ markers, sid }) {
-    if (this.props.sid !== sid) {
-      this.setMapBounds(markers);
+  componentWillReceiveProps(nextProps) {
+    if (this.props.sid !== nextProps.sid) {
+      this.animateToScene(nextProps);
     }
   }
 
-  setMapBounds(markers = this.props.markers) {
-    if (!markers.length) return;
+  animateToScene(props = this.props) {
+    const { markers, center, zoom, bounds } = props;
 
-    const bounds = getMarkersBounds(markers);
-    this.map.leafletElement.flyToBounds(bounds, { animate: true, duration: 1 });
+    console.log(props);
+
+    if (center && zoom) {
+      this.flyTo(center, zoom);
+    } else if (bounds) {
+      this.flyToBounds(bounds);
+    } else if (markers.length === 1) {
+      this.flyTo([markers[0].lat, markers[0].lon]);
+    } else if (markers.length > 1) {
+      this.flyToBounds(getMarkersBounds(markers));
+    }
+  }
+
+  flyTo(center, zoom) {
+    this.map.leafletElement.flyTo(center, zoom, {
+      animate: true,
+      duration: ANIMATION_DURATION,
+    });
+  }
+
+  flyToBounds(bounds) {
+    this.map.leafletElement.flyToBounds(bounds, {
+      animate: true,
+      duration: ANIMATION_DURATION,
+    });
   }
 
   clearInfoCardScroll = () => {
@@ -91,7 +119,7 @@ export default class Map extends Component {
   }
 
   render() {
-    const { tiles, center, zoom, markers } = this.props;
+    const { tiles, defaultCenter, defaultZoom, markers } = this.props;
     const { visible, marker } = this.state;
 
     const photosCount = marker ? marker.photos.length : 1;
@@ -103,8 +131,8 @@ export default class Map extends Component {
         ref={node => {
           this.map = node;
         }}
-        center={center}
-        zoom={zoom}
+        center={defaultCenter}
+        zoom={defaultZoom}
         dragging={false}
         keyboard={false}
         scrollWheelZoom={false}

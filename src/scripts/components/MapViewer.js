@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Swipeable from 'react-swipeable';
 import MapViewerControls from './MapViewerControls';
 
 const DEFAULT_CENTER = [55.751244, 37.618423]; // Moscow, Russia
@@ -15,22 +14,28 @@ class MapViewer extends Component {
       attribution: PropTypes.string.isRequired,
     }).isRequired,
     scenes: PropTypes.arrayOf(PropTypes.object),
-    center: PropTypes.arrayOf(PropTypes.number),
-    zoom: PropTypes.number,
-    sid: PropTypes.number,
+    defaultCenter: PropTypes.arrayOf(PropTypes.number),
+    defaultZoom: PropTypes.number,
+    defaultSid: PropTypes.number,
   };
 
   static defaultProps = {
     scenes: [],
-    center: DEFAULT_CENTER,
-    zoom: DEFAULT_ZOOM,
-    sid: 0,
+    defaultCenter: DEFAULT_CENTER,
+    defaultZoom: DEFAULT_ZOOM,
+    defaultSid: 0,
   };
 
   state = {
     isLandingClosed: false,
-    sid: this.props.sid,
+    sid: this.props.defaultSid,
   };
+
+  landingScene() {
+    const { defaultCenter, defaultZoom } = this.props;
+
+    return { sid: -1, defaultCenter, defaultZoom };
+  }
 
   onLandingClose = () => {
     this.setState({ isLandingClosed: true });
@@ -41,18 +46,11 @@ class MapViewer extends Component {
   };
 
   render() {
-    const {
-      map: Map,
-      landing: Landing,
-      tiles,
-      scenes,
-      center,
-      zoom,
-    } = this.props;
-
+    const { map: Map, landing: Landing, tiles, scenes } = this.props;
     const { isLandingClosed, sid } = this.state;
+
     const isLandingVisible = !!Landing && !isLandingClosed;
-    const scene = isLandingVisible ? { sid: -1, center, zoom } : scenes[sid];
+    const scene = isLandingVisible ? this.landingScene() : scenes[sid];
 
     return (
       <div className="map-viewer">
