@@ -50,6 +50,11 @@ export default class Map extends Component {
     this.map.leafletElement.flyToBounds(bounds, { animate: true, duration: 1 });
   }
 
+  clearInfoCardScroll = () => {
+    this.description.scrollTo(0, 0);
+    this.photos.scrollTo(0, 0);
+  };
+
   onMarkerClick = marker => {
     this.setState({
       visible: true,
@@ -59,6 +64,7 @@ export default class Map extends Component {
 
   onClose = () => {
     this.setState({ visible: false });
+    this.clearInfoCardScroll();
   };
 
   onMapClick = () => {
@@ -121,9 +127,17 @@ export default class Map extends Component {
                 <div
                   className="description-content"
                   dangerouslySetInnerHTML={{ __html: marker.description }}
+                  ref={node => {
+                    this.description = node;
+                  }}
                 />
               </div>
-              <div className="photos">
+              <div
+                className="photos"
+                ref={node => {
+                  this.photos = node;
+                }}
+              >
                 {marker.photos.map((photo, index) => (
                   <img
                     key={photo.src}
