@@ -50,16 +50,26 @@ export default class Map extends Component {
     this.map.leafletElement.flyToBounds(bounds, { animate: true, duration: 1 });
   }
 
-  onMarkerClick(marker) {
+  onMarkerClick = marker => {
     this.setState({
       visible: true,
       marker,
     });
-  }
+  };
 
-  onClose() {
+  onClose = () => {
     this.setState({ visible: false });
-  }
+  };
+
+  onMapClick = () => {
+    const { visible } = this.state;
+
+    if (!visible) {
+      return;
+    }
+
+    this.onClose();
+  };
 
   initPhotoSwipe(index) {
     const { marker } = this.state;
@@ -97,12 +107,13 @@ export default class Map extends Component {
         doubleClickZoom={false}
       >
         <TileLayer {...tiles} />
+        <div className="overlay" onClick={this.onMapClick} />
         <Markers
           points={markers}
           onClick={point => this.onMarkerClick(point)}
         />
         <div className={classNames(['infoCard', { visible }])}>
-          <div className="close" onClick={() => this.onClose()} />
+          <div className="close" onClick={this.onClose} />
           {marker && (
             <div className="content">
               <div className="title">{marker.name}</div>
