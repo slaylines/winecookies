@@ -21,8 +21,8 @@ export const getMarkersBounds = (markers = []) => {
     bounds.maxLon = Math.max(lon, bounds.maxLon);
   });
 
-  const latDelta = (bounds.maxLat - bounds.minLat) * 0.1;
-  const lonDelta = (bounds.maxLon - bounds.minLon) * 0.1;
+  const latDelta = (bounds.maxLat - bounds.minLat) * 0.1 || 0.1;
+  const lonDelta = (bounds.maxLon - bounds.minLon) * 0.1 || 0.1;
 
   return [
     [bounds.minLat - latDelta, bounds.minLon - lonDelta],

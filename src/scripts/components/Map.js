@@ -37,7 +37,7 @@ export default class Map extends Component {
     this.setMapBounds();
   }
 
-  componentWillReceiveProps({ sid, markers }) {
+  componentWillReceiveProps({ markers, sid }) {
     if (this.props.sid !== sid) {
       this.setMapBounds(markers);
     }

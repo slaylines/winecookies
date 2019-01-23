@@ -1,0 +1,29 @@
+.map-viewer {
+  position: relative;
+
+  .map-viewer-controls {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 3em;
+    z-index: 1010;
+
+    .map-viewer-controls-prev,
+    .map-viewer-controls-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+
+    .map-viewer-controls-prev {
+      left: 0;
+    }
+
+    .map-viewer-controls-next {
+      right: 0;
+    }
+  }
+}

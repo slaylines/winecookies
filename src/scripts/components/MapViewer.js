@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Swipeable from 'react-swipeable';
+import MapViewerControls from './MapViewerControls';
 
 const DEFAULT_CENTER = [55.751244, 37.618423]; // Moscow, Russia
 const DEFAULT_ZOOM = 5;
@@ -34,6 +36,10 @@ class MapViewer extends Component {
     this.setState({ isLandingClosed: true });
   };
 
+  onSceneChange = sid => {
+    this.setState({ sid });
+  };
+
   render() {
     const {
       map: Map,
@@ -50,7 +56,17 @@ class MapViewer extends Component {
 
     return (
       <div className="map-viewer">
-        {isLandingVisible && <Landing onClose={this.onLandingClose} />}
+        {isLandingVisible ? (
+          <Landing onClose={this.onLandingClose} />
+        ) : (
+          <MapViewerControls
+            sid={sid}
+            min={0}
+            max={scenes.length - 1}
+            onChange={this.onSceneChange}
+          />
+        )}
+
         <Map tiles={tiles} sid={sid} {...scene} />
       </div>
     );
