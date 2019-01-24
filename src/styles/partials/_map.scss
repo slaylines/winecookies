@@ -71,9 +71,9 @@ $marker-margin: 10px;
   .info-card {
     position: absolute;
     top: 0;
-    width: 90vw;
+    width: 90%;
+    height: 90%;
     max-width: 480px;
-    height: 80vh;
     background: $background;
     border-radius: 4px;
 
@@ -84,7 +84,7 @@ $marker-margin: 10px;
     @media (min-width: $md) {
       @include absolute-center(false, true);
 
-      right: 3vw;
+      right: 3%;
       width: 35%;
       min-width: 480px;
     }
