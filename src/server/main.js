@@ -35,7 +35,7 @@ app.use(cookieParser());
 app.use(helpers());
 
 // Serve static files.
-app.use('/', express.static(config.static, { maxAge: '30 days', etag: false }));
+app.use('/', express.static(config.static));
 
 // Mount routes.
 app.use('/', router);
