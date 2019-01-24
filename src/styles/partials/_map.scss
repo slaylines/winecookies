@@ -1,5 +1,8 @@
 @import 'base/variables';
 
+$marker-size: 64px;
+$marker-margin: 10px;
+
 .map {
   width: 100%;
   height: 100%;
@@ -13,62 +16,33 @@
 
   .markerIcon {
     position: relative;
-    width: 26px !important;
-    height: 41px !important;
-    margin-left: -13px !important;
-    margin-top: -41px !important;
+    width: $marker-size !important;
+    height: $marker-size !important;
+    margin-left: -$marker-size / 2 !important;
+    margin-top: -$marker-size - $marker-margin !important;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: $marker-size / 2;
+    border: 3px solid $accent;
+    background-color: rgba($light-background, 0.8);
     outline: none;
 
-    .emoji,
-    .name {
+    &:after {
+      content: '';
       position: absolute;
-      z-index: 1;
-      top: 0;
+      bottom: 0;
+      width: 0;
+      height: 0;
+      margin-bottom: -30px;
+      border-style: solid;
+      border-width: 30px 5px 0 5px;
+      border-color: $accent transparent transparent transparent;
     }
 
-    .emoji {
-      font-size: 1.2em;
-      top: 3px;
-      left: 6px;
-    }
-
-    .name {
-      top: 0;
-      left: 22px;
-
-      padding: 2px 4px;
-      box-sizing: border-box;
-
-      background: $white;
-      border: 0 solid $dark-background;
-      border-left: none;
-      border-radius: 0 4px 4px 0;
-      overflow: hidden;
-
-      line-height: 18px;
-      font-size: 1.2em;
-      white-space: nowrap;
-
-      max-width: 0px;
-      opacity: 0;
-
-      transition: border-width 1ms ease-in 200ms, opacity 200ms ease-in,
-                  max-width 1ms ease-in 220ms;
-    }
-
-    @media (min-width: $sm) {
-      &:hover {
-        .name {
-          max-width: 300px;
-          opacity: 1;
-          border-width: 2px;
-
-          transition: opacity 200ms ease-out;
-        }
-      }
+    & > img {
+      width: 38px;
+      height: 38px;
     }
   }
 }
