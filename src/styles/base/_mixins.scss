@@ -26,3 +26,20 @@
     font-style: $style;
   }
 }
+
+@mixin absolute-center($horizontal: true, $vertical: true) {
+  $top: 0;
+  $left: 0;
+
+  @if $horizontal == true {
+    $left: 50%;
+    left: $left;
+  }
+
+  @if $vertical == true {
+    $top: 50%;
+    top: $top;
+  }
+
+  transform: translate(-$left, -$top);
+}

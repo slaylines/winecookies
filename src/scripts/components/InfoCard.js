@@ -42,7 +42,7 @@ class InfoCard extends Component {
 
   render() {
     const { marker, visible } = this.props;
-    const classes = classNames(['infoCard', { visible }]);
+    const classes = classNames(['info-card-container', { visible }]);
     const photosCount = marker ? marker.photos.length : 1;
     const photosWidth = photosCount <= 3 ? 100 / photosCount : 30;
     const portalNode = document.querySelector('.map-viewer-controls');
@@ -50,38 +50,42 @@ class InfoCard extends Component {
     return (
       <Portal node={portalNode}>
         <div className={classes}>
-          {marker && (
-            <div className="content">
-              <div className="title">{marker.name}</div>
-              <div className="description">
-                <div
-                  className="description-content"
-                  dangerouslySetInnerHTML={{ __html: marker.description }}
-                  ref={node => {
-                    this.description = node;
-                  }}
-                />
-              </div>
-              <div
-                className="photos"
-                ref={node => {
-                  this.photos = node;
-                }}
-              >
-                {marker.photos.map((photo, index) => (
-                  <img
-                    key={photo.src}
-                    src={photo.src}
-                    style={{ width: `${photosWidth}%` }}
-                    onClick={() => this.initGallery(index)}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
+          <div className="info-card-overlay" onClick={this.onClose} />
 
-          <div className="close" onClick={this.onClose}>
-            <span className="icon-cancel" />
+          <div className="info-card">
+            {marker && (
+              <div className="content">
+                <div className="title">{marker.name}</div>
+                <div className="description">
+                  <div
+                    className="description-content"
+                    dangerouslySetInnerHTML={{ __html: marker.description }}
+                    ref={node => {
+                      this.description = node;
+                    }}
+                  />
+                </div>
+                <div
+                  className="photos"
+                  ref={node => {
+                    this.photos = node;
+                  }}
+                >
+                  {marker.photos.map((photo, index) => (
+                    <img
+                      key={photo.src}
+                      src={photo.src}
+                      style={{ width: `${photosWidth}%` }}
+                      onClick={() => this.initGallery(index)}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="close" onClick={this.onClose}>
+              <span className="icon-cancel" />
+            </div>
           </div>
         </div>
       </Portal>
