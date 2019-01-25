@@ -6,7 +6,7 @@ import { DivIcon } from 'leaflet';
 export default class Markers extends Component {
   getIcon({ icon }) {
     return new DivIcon({
-      className: 'markerIcon',
+      className: 'marker-icon',
       html: `<img src='${icon}'>`,
     });
   }
