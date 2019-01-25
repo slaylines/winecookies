@@ -46,6 +46,14 @@ $marker-margin: 10px;
       height: 38px;
     }
   }
+
+  .leaflet-control-attribution {
+    position: fixed;
+    bottom: $footer-height;
+    left: 0;
+    transform: rotate(90deg) translateX(-100%);
+    transform-origin: bottom left;
+  }
 }
 
 .info-card-container {
