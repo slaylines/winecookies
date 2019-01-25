@@ -124,6 +124,7 @@ $photos-z-index: 100;
       width: 100%;
       height: 100%;
       padding: 10px 24px;
+      -webkit-overflow-scrolling: touch;
 
       .title {
         margin: 0;
@@ -241,9 +242,11 @@ $photos-z-index: 100;
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: rgba($dark-background, 0.7);
+      background: rgba($dark-background, 0.75);
       color: $light-text-color;
-      font-size: 1.5em;
+      font-family: "Icons";
+      font-size: 1.3em;
+      transform: rotate(-90deg);
       opacity: 0;
       transition: all 100ms ease-in;
 

@@ -129,7 +129,9 @@ class InfoCard extends Component {
               ref={node => {
                 this.scrollHint = node;
               }}
-            />
+            >
+              <span className="icon-left-open-big" />
+            </div>
           </div>
         </div>
       </Portal>
