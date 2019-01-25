@@ -86,9 +86,39 @@ class Tracker {
    */
 
   pageView() {
-    this.track('Page View', {
-      url: window.location.pathname,
-    });
+    this.track('Page View', { url: window.location.pathname });
+  }
+
+  socialMediaSharing(name) {
+    this.track('Social Media Sharing', { name });
+  }
+
+  telegramSubscription() {
+    this.track('Telegram Subscription');
+  }
+
+  logoLinkClick() {
+    this.track('Logo Link: Click');
+  }
+
+  landingClick() {
+    this.track('Landing: Click');
+  }
+
+  mapViewerNav(sid, direction) {
+    this.track('Map Viewer: Nav', { sid, direction });
+  }
+
+  markerClick(name) {
+    this.track('Marker: Click', { name });
+  }
+
+  infoCardGalleryView(name) {
+    this.track('Info Card: Gallery View', { name });
+  }
+
+  infoCardFullScroll(name) {
+    this.track('Info Card: Full Scroll', { name });
   }
 }
 
