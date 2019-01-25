@@ -23,14 +23,14 @@ class MapViewerControls extends Component {
     const { sid, min, onChange } = this.props;
     const newSid = Math.max(sid - 1, min);
 
-    if (newSid !== sid) onChange(newSid);
+    if (newSid !== sid) onChange(newSid, 'prev');
   };
 
   onNext = () => {
     const { sid, max, onChange } = this.props;
     const newSid = Math.min(sid + 1, max);
 
-    if (newSid !== sid) onChange(newSid);
+    if (newSid !== sid) onChange(newSid, 'next');
   };
 
   render() {

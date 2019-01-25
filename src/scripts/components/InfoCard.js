@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { Portal } from 'react-portal';
 import * as PhotoSwipe from 'photoswipe';
 import * as PhotoSwipeTheme from 'photoswipe/dist/photoswipe-ui-default';
+import tracker from '../utils/tracker';
 
 class InfoCard extends Component {
   static propTypes = {
@@ -23,6 +24,7 @@ class InfoCard extends Component {
     const gallery = new PhotoSwipe(pswpElement, PhotoSwipeTheme, marker.photos);
 
     gallery.init();
+    tracker.infoCardGalleryView(marker.name);
   }
 
   clearInfoCardScroll = () => {

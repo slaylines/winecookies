@@ -23,6 +23,10 @@ class Tracker {
     return window.amplitude.getInstance();
   }
 
+  get inactive() {
+    return !this.enabled || this.blocked;
+  }
+
   waitAmplitude() {
     let retriesCount = 0;
 
@@ -58,15 +62,18 @@ class Tracker {
   track(name, data, callback) {
     const xdata = this.extendData(data);
 
-    if (this.debug) {
-      const status = this.loaded ? 'Queued' : 'Sent';
+    if (this.loaded && this.debug) {
       const timestamp = new Date().toLocaleTimeString();
 
       // eslint-disable-next-line
-      console.log(`[Amplitude:${status}][${timestamp}]`, name, xdata);
+      console.log(`[Amplitude][${timestamp}]`, name, xdata);
     }
 
-    if (!this.enabled || this.blocked) return;
+    // Do nothing if disabled or blocked.
+    if (this.inactive) {
+      if (callback) callback();
+      return;
+    }
 
     if (this.loaded) {
       this.api.logEvent(name, xdata, callback);
@@ -75,10 +82,16 @@ class Tracker {
     }
   }
 
-  extendData(data = {}) {
-    return Object.assign(data, {
-      page: this.page,
+  trackLink(event, name, data) {
+    event.preventDefault();
+
+    this.track(name, data, () => {
+      window.location = event.currentTarget.getAttribute('href');
     });
+  }
+
+  extendData(data = {}) {
+    return Object.assign(data, { page: this.page });
   }
 
   /**
@@ -89,16 +102,16 @@ class Tracker {
     this.track('Page View', { url: window.location.pathname });
   }
 
-  socialMediaSharing(name) {
-    this.track('Social Media Sharing', { name });
+  socialMediaSharing(event, name) {
+    this.trackLink(event, 'Social Media Sharing', { name });
   }
 
-  telegramSubscription() {
-    this.track('Telegram Subscription');
+  telegramSubscription(event) {
+    this.trackLink(event, 'Telegram Subscription');
   }
 
-  logoLinkClick() {
-    this.track('Logo Link: Click');
+  logoLinkClick(event) {
+    this.trackLink(event, 'Logo Link: Click');
   }
 
   landingClick() {

@@ -9,6 +9,7 @@ import { Map as LeafletMap, TileLayer } from 'react-leaflet';
 import Markers from './Markers';
 import InfoCard from './InfoCard';
 import { getMarkersBounds } from '../utils/map';
+import tracker from '../utils/tracker';
 
 const ANIMATION_DURATION = 1;
 
@@ -79,6 +80,8 @@ export default class Map extends Component {
       visible: true,
       marker,
     });
+
+    tracker.markerClick(marker.name);
   };
 
   onInfoCardClose = () => {

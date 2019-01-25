@@ -33,14 +33,14 @@ $control-size: 30px;
 
     .map-viewer-controls-prev {
       left: 0;
-      padding-right: $control-size * 0.25;
+      padding-right: $control-size * 0.3;
       border-bottom-right-radius: $control-size * 2;
       border-top-right-radius: $control-size * 2;
     }
 
     .map-viewer-controls-next {
       right: 0;
-      padding-left: $control-size * 0.25;
+      padding-left: $control-size * 0.3;
       border-bottom-left-radius: $control-size * 2;
       border-top-left-radius: $control-size * 2;
     }

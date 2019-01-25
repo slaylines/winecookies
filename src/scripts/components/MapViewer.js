@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import MapViewerControls from './MapViewerControls';
+import tracker from '../utils/tracker';
 
 const DEFAULT_CENTER = [55.751244, 37.618423]; // Moscow, Russia
 const DEFAULT_ZOOM = 5;
@@ -39,10 +40,12 @@ class MapViewer extends Component {
 
   onLandingClose = () => {
     this.setState({ isLandingClosed: true });
+    tracker.landingClick();
   };
 
-  onSceneChange = sid => {
+  onSceneChange = (sid, direction) => {
     this.setState({ sid });
+    tracker.mapViewerNav(sid, direction);
   };
 
   render() {
