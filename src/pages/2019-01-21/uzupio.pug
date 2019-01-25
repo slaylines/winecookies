@@ -1,7 +1,8 @@
 extends /layouts/main.pug
 
-block header-name
-  | Что посмотреть в Ужуписе?
+block variables
+  -const header = 'Что посмотреть в Ужуписе?';
+  -const page = 'uzupio';
 
 append stylesheets
   link(rel='stylesheet', href=assetPath('/assets/uzupio.css'))

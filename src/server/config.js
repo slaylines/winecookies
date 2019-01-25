@@ -26,4 +26,11 @@ module.exports = {
     path.resolve(__dirname, '../pages', '**/*.pug'),
     '!**/{layouts,partials,mixins}/**/*.pug',
   ],
+
+  // Analytics.
+  amplitude: {
+    apiKey: process.env.AMPLITUDE_API_KEY,
+    enabled: process.env.AMPLITUDE_ENABLED === 'true',
+    debug: process.env.AMPLITUDE_DEBUG === 'true',
+  },
 };
