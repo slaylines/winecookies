@@ -31,7 +31,7 @@ class InfoCard extends Component {
   }
 
   clearInfoCardScroll = () => {
-    this.description.scrollTo(0, 0);
+    this.content.scrollTo(0, 0);
     this.photos.scrollTo(0, 0);
   };
 
@@ -54,17 +54,13 @@ class InfoCard extends Component {
 
           <div className="info-card">
             {marker && (
-              <div className="content">
+              <div
+                className="content"
+                ref={node => {
+                  this.content = node;
+                }}
+              >
                 <div className="title">{marker.name}</div>
-                <div className="description">
-                  <div
-                    className="description-content"
-                    dangerouslySetInnerHTML={{ __html: marker.description }}
-                    ref={node => {
-                      this.description = node;
-                    }}
-                  />
-                </div>
                 <div
                   className="photos"
                   ref={node => {
@@ -80,6 +76,10 @@ class InfoCard extends Component {
                     />
                   ))}
                 </div>
+                <div
+                  className="description"
+                  dangerouslySetInnerHTML={{ __html: marker.description }}
+                />
               </div>
             )}
 
