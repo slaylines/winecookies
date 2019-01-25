@@ -17,22 +17,16 @@ class InfoCard extends Component {
     onClose: () => {},
   };
 
-  initGallery(index) {
+  initGallery() {
     const { marker } = this.props;
     const pswpElement = document.querySelectorAll('.pswp')[0];
-    const gallery = new PhotoSwipe(
-      pswpElement,
-      PhotoSwipeTheme,
-      marker.photos,
-      { index }
-    );
+    const gallery = new PhotoSwipe(pswpElement, PhotoSwipeTheme, marker.photos);
 
     gallery.init();
   }
 
   clearInfoCardScroll = () => {
     this.content.scrollTo(0, 0);
-    this.photos.scrollTo(0, 0);
   };
 
   onClose = () => {
@@ -43,8 +37,6 @@ class InfoCard extends Component {
   render() {
     const { marker, visible } = this.props;
     const classes = classNames(['info-card-container', { visible }]);
-    const photosCount = marker ? marker.photos.length : 1;
-    const photosWidth = photosCount <= 3 ? 100 / photosCount : 30;
     const portalNode = document.querySelector('.map-viewer-controls');
 
     return (
@@ -61,20 +53,16 @@ class InfoCard extends Component {
                 }}
               >
                 <div className="title">{marker.name}</div>
-                <div
-                  className="photos"
-                  ref={node => {
-                    this.photos = node;
-                  }}
-                >
-                  {marker.photos.map((photo, index) => (
-                    <img
-                      key={photo.src}
-                      src={photo.src}
-                      style={{ width: `${photosWidth}%` }}
-                      onClick={() => this.initGallery(index)}
-                    />
-                  ))}
+                <div className="photos">
+                  <div className="photos-container">
+                    {marker.photos.slice(0, 3).map(photo => (
+                      <img key={photo.src} src={photo.src} />
+                    ))}
+                  </div>
+                  <div
+                    className="photos-button"
+                    onClick={() => this.initGallery()}
+                  >Смотреть фото</div>
                 </div>
                 <div
                   className="description"
