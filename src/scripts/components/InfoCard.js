@@ -26,6 +26,7 @@ class InfoCard extends Component {
     const { marker } = this.props;
 
     if (marker) {
+      this.scrolled = false;
       this.hintVisible = this.content.scrollHeight > this.content.clientHeight;
       if (this.hintVisible) {
         this.showScrollHint();
