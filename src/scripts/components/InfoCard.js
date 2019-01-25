@@ -55,16 +55,13 @@ class InfoCard extends Component {
                 }}
               >
                 <div className="title">{marker.name}</div>
-                <div className="photos">
+                <div className="photos" onClick={() => this.initGallery()}>
                   <div className="photos-container">
                     {marker.photos.slice(0, 3).map(photo => (
                       <img key={photo.src} src={photo.src} />
                     ))}
                   </div>
-                  <div
-                    className="photos-button"
-                    onClick={() => this.initGallery()}
-                  >Смотреть фото</div>
+                  <div className="photos-button">Смотреть фото</div>
                 </div>
                 <div
                   className="description"

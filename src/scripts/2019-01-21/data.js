@@ -6,6 +6,8 @@ export default {
   defaultSid: 1,
   scenes: [
     {
+      center: [54.6813, 25.293653],
+      zoom: 17,
       markers: [
         {
           lat: 54.681009,
@@ -29,6 +31,8 @@ export default {
       ],
     },
     {
+      center: [54.6803, 25.29639],
+      zoom: 17,
       markers: [
         {
           lat: 54.680175,
@@ -91,6 +95,8 @@ export default {
       ],
     },
     {
+      center: [54.680568, 25.30663],
+      zoom: 16,
       markers: [
         {
           lat: 54.680568,
