@@ -26,8 +26,8 @@ class MapViewerSubscribe extends Component {
                 d="M 50 50 m -30, 0 a 30,30 0 1,1 60,0 a 30,30 0 1,1 -60,0"
               />
             </defs>
-            <text dx="0">
-              <textPath href="#text-circle">Подписаться</textPath>
+            <text>
+              <textPath xlinkHref="#text-circle">Подписаться</textPath>
             </text>
           </svg>
         </div>
