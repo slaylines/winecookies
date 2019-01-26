@@ -12,8 +12,8 @@ mixin meta()
   -const ogDescription = attributes['og-description'] || description;
   -const ogUrl = attributes['og-url'] || url;
 
-  -const ogImage = attributes['og-image'] || `${host}/images/ogimage.jpg`;
-  -const ogImageType = attributes['og-image-type'] || 'image/jpg';
+  -const ogImage = `${host}${attributes['og-image'] || '/images/poster.png'}`;
+  -const ogImageType = attributes['og-image-type'] || 'image/png';
   -const ogImageWidth = attributes['og-image-width'] || '2400';
   -const ogImageHeight = attributes['og-image-height'] || '1260';
   -const ogImageAlt = attributes['og-image-alt'] || title;

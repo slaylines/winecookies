@@ -3,6 +3,16 @@
 
 $control-size: 30px;
 $subscribe-size: 60px;
+$subscribe-animation: rotating 10s linear infinite;
+
+@keyframes rotating {
+  from {
+    @include rotate(-50);
+  }
+  to {
+    @include rotate(310);
+  }
+}
 
 .map-viewer {
   position: relative;
@@ -29,8 +39,8 @@ $subscribe-size: 60px;
 
     .map-viewer-subscribe {
       position: absolute;
-      bottom: 10px;
-      right: 10px;
+      bottom: 20px;
+      right: 20px;
 
       .map-viewer-subscribe-letters {
         position: absolute;
@@ -38,7 +48,7 @@ $subscribe-size: 60px;
         left: -27px;
         bottom: -27px;
         right: -27px;
-        transform: rotate(-50deg);
+        animation: $subscribe-animation;
 
         text {
           font-family: $title-font;
