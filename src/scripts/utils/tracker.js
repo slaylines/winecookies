@@ -103,11 +103,11 @@ class Tracker {
   }
 
   socialMediaSharing(event, name) {
-    this.trackLink(event, 'Social Media Sharing', { name });
+    this.track('Social Media Sharing', { name });
   }
 
-  telegramSubscription(event) {
-    this.trackLink(event, 'Telegram Subscription');
+  telegramSubscription() {
+    this.track('Telegram Subscription');
   }
 
   logoLinkClick(event) {

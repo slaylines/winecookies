@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import MapViewerControls from './MapViewerControls';
+import MapViewerSubscribe from './MapViewerSubscribe';
 import tracker from '../utils/tracker';
 
 const DEFAULT_CENTER = [55.751244, 37.618423]; // Moscow, Russia
@@ -65,6 +66,7 @@ class MapViewer extends Component {
           onChange={this.onSceneChange}
         >
           {isLandingVisible && <Landing onClose={this.onLandingClose} />}
+          {!isLandingVisible && <MapViewerSubscribe />}
           <Map tiles={tiles} sid={sid} {...scene} />
         </MapViewerControls>
       </div>

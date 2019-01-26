@@ -1,6 +1,8 @@
 @import 'base/variables';
+@import 'base/mixins';
 
 $control-size: 30px;
+$subscribe-size: 60px;
 
 .map-viewer {
   position: relative;
@@ -11,6 +13,59 @@ $control-size: 30px;
     left: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
+
+    .map-viewer-subscribe,
+    .map-viewer-controls-prev,
+    .map-viewer-controls-next {
+      opacity: 0.7;
+      z-index: $map-z-index;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    .map-viewer-subscribe {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+
+      .map-viewer-subscribe-letters {
+        position: absolute;
+        top: -27px;
+        left: -27px;
+        bottom: -27px;
+        right: -27px;
+        transform: rotate(-50deg);
+
+        text {
+          font-family: $title-font;
+          font-size: 11px;
+          font-weight: bold;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          fill: $dark-blue;
+        }
+      }
+
+      .map-viewer-subscribe-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: $subscribe-size;
+        height: $subscribe-size;
+        background: $dark-blue;
+        border-radius: 50%;
+
+        img {
+          width: 50%;
+          height: 50%;
+          margin-right: 5px;
+        }
+      }
+    }
 
     .map-viewer-controls-prev,
     .map-viewer-controls-next {
@@ -26,9 +81,6 @@ $control-size: 30px;
       font-family: $icon-font;
       font-size: 1.3em;
       transform: translateY(-50%);
-      opacity: 0.7;
-      cursor: pointer;
-      z-index: $map-z-index;
     }
 
     .map-viewer-controls-prev {
