@@ -102,7 +102,7 @@ class Tracker {
     this.track('Page View', { url: window.location.pathname });
   }
 
-  socialMediaSharing(event, name) {
+  socialMediaSharing(name) {
     this.track('Social Media Sharing', { name });
   }
 
