@@ -70,6 +70,7 @@ $photos-z-index: 100;
   opacity: 0;
   z-index: $map-z-index + 100;
   pointer-events: none;
+  transform-style: preserve-3d;
 
   .info-card-overlay {
     position: absolute;

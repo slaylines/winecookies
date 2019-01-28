@@ -11,12 +11,6 @@ export default class Markers extends Component {
     });
   }
 
-  onClick = (event, point) => {
-    event.originalEvent.preventDefault();
-
-    this.props.onClick(point);
-  };
-
   render() {
     const { points } = this.props;
 
@@ -27,7 +21,7 @@ export default class Markers extends Component {
             key={`${point.lat}_${point.lon}`}
             position={[point.lat, point.lon]}
             icon={this.getIcon(point)}
-            onClick={event => this.onClick(event, point)}
+            onClick={() => this.onClick(point)}
           />
         ))}
       </div>
