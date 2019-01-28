@@ -89,7 +89,9 @@ class InfoCard extends Component {
     const portalNode = document.querySelector('.map-viewer-controls');
 
     const currentMarker = marker || {};
-    const photos = currentMarker.photos || [];
+    const photos = currentMarker.gallery
+      ? currentMarker.gallery.map(ph => currentMarker.photos[ph])
+      : [];
 
     return (
       <Portal node={portalNode}>
@@ -106,7 +108,7 @@ class InfoCard extends Component {
               <div className="title">{currentMarker.name}</div>
               <div className="photos" onClick={() => this.initGallery()}>
                 <div className="photos-container">
-                  {photos.slice(0, 3).map(photo => (
+                  {photos.map(photo => (
                     <img key={photo.src} src={photo.src} />
                   ))}
                 </div>
