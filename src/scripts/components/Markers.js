@@ -12,7 +12,7 @@ export default class Markers extends Component {
   }
 
   render() {
-    const { points } = this.props;
+    const { points, onClick } = this.props;
 
     return (
       <div>
@@ -21,7 +21,7 @@ export default class Markers extends Component {
             key={`${point.lat}_${point.lon}`}
             position={[point.lat, point.lon]}
             icon={this.getIcon(point)}
-            onClick={() => this.onClick(point)}
+            onClick={() => onClick(point)}
           />
         ))}
       </div>
