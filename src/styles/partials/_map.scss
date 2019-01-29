@@ -23,6 +23,7 @@ $photos-z-index: 100;
   .marker-icon-container {
     position: relative;
     opacity: 0.7;
+    outline: none;
     transform-style: preserve-3d;
 
     &:hover {
@@ -36,7 +37,6 @@ $photos-z-index: 100;
       align-items: center;
       background: $accent-background;
       border-radius: 50% 50% 50% 0;
-      outline: none;
 
       // Position bottom part of the marker at the center of
       // Leaflet marker. Shift it vertically by a margin to account
@@ -73,7 +73,6 @@ $photos-z-index: 100;
   height: 100%;
   opacity: 0;
   z-index: $map-z-index + 100;
-  pointer-events: none;
   transform-style: preserve-3d;
 
   .info-card-overlay {
@@ -264,7 +263,7 @@ $photos-z-index: 100;
     }
   }
 
-  &.visible {
+  &.visible-enter-done {
     opacity: 1;
     transition: all 200ms ease-in;
     pointer-events: all;

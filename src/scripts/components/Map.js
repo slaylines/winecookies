@@ -34,7 +34,6 @@ export default class Map extends Component {
 
   state = {
     marker: null,
-    visible: false,
   };
 
   componentDidMount() {
@@ -76,21 +75,17 @@ export default class Map extends Component {
   }
 
   onMarkerClick = marker => {
-    this.setState({
-      visible: true,
-      marker,
-    });
-
+    this.setState({ marker });
     tracker.markerClick(marker.name);
   };
 
   onInfoCardClose = () => {
-    this.setState({ visible: false });
+    this.setState({ marker: null });
   };
 
   render() {
     const { tiles, defaultCenter, defaultZoom, markers } = this.props;
-    const { visible, marker } = this.state;
+    const { marker } = this.state;
 
     return (
       <LeafletMap
@@ -112,11 +107,7 @@ export default class Map extends Component {
           points={markers}
           onClick={point => this.onMarkerClick(point)}
         />
-        <InfoCard
-          marker={marker}
-          visible={visible}
-          onClose={this.onInfoCardClose}
-        />
+        <InfoCard marker={marker} onClose={this.onInfoCardClose} />
       </LeafletMap>
     );
   }
