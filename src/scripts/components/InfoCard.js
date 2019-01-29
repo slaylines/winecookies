@@ -87,6 +87,10 @@ class InfoCard extends Component {
     this.scrollHint.classList.remove('visible');
   };
 
+  onStopPropagation = event => {
+    event.stopPropagation();
+  };
+
   render() {
     const { marker, visible } = this.props;
     const classes = classNames(['info-card-container', { visible }]);
@@ -99,7 +103,11 @@ class InfoCard extends Component {
 
     return (
       <Portal node={portalNode}>
-        <div className={classes}>
+        <div
+          className={classes}
+          onMouseDown={this.onStopPropagation}
+          onTouchStart={this.onStopPropagation}
+        >
           <div className="info-card-overlay" onClick={this.onClose} />
 
           <div className="info-card">
