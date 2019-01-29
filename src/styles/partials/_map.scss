@@ -1,8 +1,9 @@
 @import 'base/variables';
 @import 'base/mixins';
 
-$marker-size: 64px;
-$marker-margin: 10px;
+$sqrt-2: 1.4142135624;
+$marker-size: 56px;
+$marker-margin: ($sqrt-2 - 1) * $marker-size / 2;
 
 $button-z-index: 110;
 $overlay-z-index: 101;
@@ -19,35 +20,38 @@ $photos-z-index: 100;
     opacity: 0;
   }
 
-  .marker-icon {
+  .marker-icon-container {
     position: relative;
-    width: $marker-size !important;
-    height: $marker-size !important;
-    margin-left: -$marker-size / 2 !important;
-    margin-top: -$marker-size - $marker-margin !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: $marker-size / 2;
-    border: 3px solid $accent;
-    background-color: rgba($light-background, 0.8);
-    outline: none;
+    opacity: 0.7;
+    transform-style: preserve-3d;
 
-    &:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      width: 0;
-      height: 0;
-      margin-bottom: -30px;
-      border-style: solid;
-      border-width: 30px 5px 0 5px;
-      border-color: $accent transparent transparent transparent;
+    &:hover {
+      opacity: 1;
     }
 
-    & > img {
-      width: 38px;
-      height: 38px;
+    .marker-icon {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: $accent-background;
+      border-radius: 50% 50% 50% 0;
+      outline: none;
+
+      // Position bottom part of the marker at the center of
+      // Leaflet marker. Shift it vertically by a margin to account
+      // for a pin's edge height.
+      left: 50%;
+      bottom: 50%;
+      width: $marker-size;
+      height: $marker-size;
+      transform: translate(-50%, -$marker-margin) rotate(-45deg);
+
+      & > img {
+        width: 50%;
+        height: 50%;
+        transform: rotate(45deg);
+      }
     }
   }
 
