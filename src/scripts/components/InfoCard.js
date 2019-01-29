@@ -75,6 +75,10 @@ class InfoCard extends Component {
     }
   };
 
+  scrollBottom = () => {
+    this.content.scrollTo(0, this.content.scrollHeight);
+  };
+
   showScrollHint = () => {
     this.scrollHint.classList.add('visible');
   };
@@ -128,6 +132,7 @@ class InfoCard extends Component {
 
             <div
               className="scroll-hint"
+              onClick={this.scrollBottom}
               ref={node => {
                 this.scrollHint = node;
               }}

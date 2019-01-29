@@ -133,7 +133,7 @@ $photos-z-index: 100;
 
       .title {
         margin: 0;
-        padding: 0 30px 10px 0;
+        padding: 0 30px 4px 0;
         font-size: 1.6em;
         font-weight: bold;
         font-family: $title-font;
@@ -157,7 +157,7 @@ $photos-z-index: 100;
         cursor: pointer;
 
         @media (min-width: $xs) {
-          height: 200px;
+          height: 180px;
         }
 
         .photos-container {
@@ -256,6 +256,7 @@ $photos-z-index: 100;
       transform: rotate(-90deg);
       opacity: 0;
       transition: all 100ms ease-in;
+      cursor: pointer;
 
       &.visible {
         opacity: 1;
