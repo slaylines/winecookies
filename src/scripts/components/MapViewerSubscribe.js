@@ -6,7 +6,7 @@ const SUBSCRIPTION_URL = 'http://tglink.me/winecookies';
 // FYI: https://stackoverflow.com/a/10477334/1211780
 class MapViewerSubscribe extends Component {
   onClick = () => {
-    tracker.telegramSubscription();
+    tracker.telegramSubscription(SUBSCRIPTION_URL);
   };
 
   render() {
