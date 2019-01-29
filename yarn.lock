@@ -6076,7 +6076,7 @@ react-swipeable@4.3.1:
     detect-passive-events "^1.0.4"
     prop-types "^15.5.8"
 
-react-transition-group@^2.5.3:
+react-transition-group@2.5.3:
   version "2.5.3"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.5.3.tgz#26de363cab19e5c88ae5dbae105c706cf953bb92"
   integrity sha512-2DGFck6h99kLNr8pOFk+z4Soq3iISydwOFeeEVPjTN6+Y01CmvbWmnN02VuTWyFdnRtIDPe+wy2q6Ui8snBPZg==
