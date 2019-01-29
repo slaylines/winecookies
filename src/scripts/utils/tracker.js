@@ -110,8 +110,8 @@ class Tracker {
     this.track('Telegram Subscription', { url });
   }
 
-  logoLinkClick(event) {
-    this.trackLink(event, 'Logo Link: Click');
+  logoLinkClick() {
+    this.track('Logo Link: Click');
   }
 
   landingClick() {

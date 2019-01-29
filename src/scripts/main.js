@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
   tracker.pageView();
 
   if ($headerLink) {
-    $headerLink.addEventListener('click', event => {
-      tracker.logoLinkClick(event);
+    $headerLink.addEventListener('click', () => {
+      tracker.logoLinkClick();
     });
   }
 
