@@ -5,6 +5,7 @@ import { Portal } from 'react-portal';
 import { CSSTransition } from 'react-transition-group';
 import * as PhotoSwipe from 'photoswipe';
 import * as PhotoSwipeTheme from 'photoswipe/dist/photoswipe-ui-default';
+import Image from './Image';
 import tracker from '../utils/tracker';
 
 class InfoCard extends Component {
@@ -130,7 +131,9 @@ class InfoCard extends Component {
                 <div className="photos" onClick={() => this.initGallery()}>
                   <div className="photos-container">
                     {photos.map(photo => (
-                      <img key={photo.src} src={photo.src} />
+                      <div key={photo.src} className="photo-container">
+                        <Image src={photo.src} className="photo-item image" />
+                      </div>
                     ))}
                   </div>
                   <div className="photos-button">Смотреть фото</div>
