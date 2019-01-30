@@ -75,3 +75,14 @@
 @mixin skew($x, $y) {
   @include transform(skew(#{$x}deg, #{$y}deg));
 }
+
+@mixin hitbox($margin) {
+  &:before {
+    content: '';
+    position: absolute;
+    top: -$margin;
+    left: -$margin;
+    right: -$margin;
+    bottom: -$margin;
+  }
+}

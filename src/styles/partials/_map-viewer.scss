@@ -79,6 +79,8 @@ $subscribe-animation: rotating 10s linear infinite;
 
     .map-viewer-controls-prev,
     .map-viewer-controls-next {
+      @include hitbox(10px);
+
       position: absolute;
       display: flex;
       align-items: center;
