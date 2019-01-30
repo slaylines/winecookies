@@ -12,7 +12,7 @@ module.exports = {
   context: path.resolve(__dirname, '..'),
   entry: {
     main: [path.resolve('src', 'scripts', 'main.js')],
-    uzupio: [path.resolve('src', 'scripts', '2019-01-21', 'uzupio.js')],
+    uzupio: [path.resolve('src', 'scripts', '2019-01-30', 'uzupio.js')],
   },
   output: {
     path: path.resolve('static', 'assets'),

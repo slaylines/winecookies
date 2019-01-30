@@ -1,4 +1,4 @@
-import '../../styles/2019-01-21/uzupio.scss';
+import '../../styles/2019-01-30/uzupio.scss';
 
 import React, { Component } from 'react';
 import { render } from 'react-dom';
