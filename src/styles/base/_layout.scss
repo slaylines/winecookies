@@ -9,6 +9,7 @@
 html,
 body,
 main {
+  position: relative;
   width: 100%;
   height: 100%;
   user-select: none;
@@ -21,22 +22,15 @@ body {
   overflow: hidden;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-}
-
-body,
-main {
-  position: relative;
 
   a {
     text-decoration: none;
   }
+}
 
+main {
   .app,
   .map-viewer {
     height: 100%;
   }
-}
-
-footer {
-  background: $light-background;
 }
