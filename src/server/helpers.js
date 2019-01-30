@@ -1,6 +1,6 @@
 const url = require('url');
 const manifest = require('./utils/manifest');
-const { amplitude } = require('./config');
+const { amplitude, sentry } = require('./config');
 
 const assetPath = path => (manifest ? manifest[path] : path);
 
@@ -12,6 +12,7 @@ const helpers = () => (req, res, next) => {
     assetPath,
     isLinkActive,
     amplitude,
+    sentry,
   });
 
   next();

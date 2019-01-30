@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import MapViewerControls from './MapViewerControls';
 import MapViewerSubscribe from './MapViewerSubscribe';
 import tracker from '../utils/tracker';
+import sentry from '../utils/sentry';
 
 const DEFAULT_CENTER = [55.751244, 37.618423]; // Moscow, Russia
 const DEFAULT_ZOOM = 5;
@@ -32,6 +33,10 @@ class MapViewer extends Component {
     isLandingClosed: false,
     sid: this.props.defaultSid,
   };
+
+  componentDidCatch(error) {
+    sentry.captureException(error);
+  }
 
   landingScene() {
     const { defaultCenter, defaultZoom } = this.props;

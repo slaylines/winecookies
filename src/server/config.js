@@ -33,4 +33,10 @@ module.exports = {
     enabled: process.env.AMPLITUDE_ENABLED === 'true',
     debug: process.env.AMPLITUDE_DEBUG === 'true',
   },
+
+  // Error reporting.
+  sentry: {
+    dsn: process.env.SENTRY_DSN,
+    enabled: process.env.SENTRY_ENABLED === 'true',
+  },
 };
